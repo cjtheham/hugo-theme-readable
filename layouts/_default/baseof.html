@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body>
+        <header>
+            {{- partial "header.html" . -}}
+        </header>
+
+        <nav>
+            {{ range .Site.Menus.main -}}
+            <span>
+                <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+            </span>
+            {{- end }}
+        </nav>
+
+        <main>
+            {{- block "main" . }}{{- end }}
+        </main>
+
+
+        <footer>
+            {{- partial "footer.html" . -}}
+        </footer>
+    </body>
+</html>

@@ -30,4 +30,4 @@ Freedom to Write has provided some awesome guides on writing HTML that works aut
 
 - Benjamin loves when new sites and projects pop up using the readable.css framework!
   - If you've built a complete site using this theme, submit an issue to the [original repo](https://codeberg.org/Freedom-to-Write/readable.css) with the URL of your site to be featured in the project's README.
-  - Projects like this and other non-website uses of the framework, such as adapting it to other static site generators, can be featured on the page[Unofficial Related Projects (that are awesome)](https://codeberg.org/Freedom-to-Write/readable.css/wiki/Unofficial-Related-Projects-%28that-are-awesome%29). Go mention @freedomtowrite@fosstodon.org to be featured there!
+  - Projects like this and other non-website uses of the framework, such as adapting it to other static site generators, can be featured on the page [Unofficial Related Projects (that are awesome)](https://codeberg.org/Freedom-to-Write/readable.css/wiki/Unofficial-Related-Projects-%28that-are-awesome%29). Go mention [@freedomtowrite@fosstodon.org](https://fosstodon.org/@freedomtowrite) to be featured there!

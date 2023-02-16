@@ -1,2 +1,10 @@
 <h1>{{ $.Site.Title }}</h1>
 <p>{{ $.Site.Params.subtitle }}</p>
+
+<nav>
+  {{ range .Site.Menus.main -}}
+  <span>
+      <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+  </span>
+  {{- end }}
+</nav>

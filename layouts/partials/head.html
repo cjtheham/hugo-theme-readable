@@ -3,6 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- This ensures your site looks right on mobile devices -->
     <link rel="stylesheet" type="text/css" href="/css/readable.css?v=1.0.1">
     <meta name="description" content='{{ .Page.Description }}'>
+    {{ if .Site.Params.favicon }}
+    <link rel="shortcut icon" href="{{ relURL ($.Site.Params.favicon) }}" type="image/x-icon" /> <!-- Show a favicon for your site, if one is configured in the Params section of the config. -->
+    {{ end }}
     {{ $title := print .Site.Title " | " .Title }}
     {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
     <title>{{ $title }}</title>

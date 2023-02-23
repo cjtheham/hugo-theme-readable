@@ -26,6 +26,28 @@ For more information on starting a Hugo website and using custom themes, refer t
 
 Freedom to Write has provided some awesome guides on writing HTML that works automatically with the formatting of Readable. For a complete HTML page guide on writing custom pages, see [Overall Structure](https://codeberg.org/Freedom-to-Write/readable.css/wiki/Overall-Structure). For some neat tips that may make life easier working with this style sheet, read [Quick Tips](https://codeberg.org/Freedom-to-Write/readable.css/wiki/Quick-Tips).
 
+## Shortcodes
+
+### aside
+
+readable.css prefers the `<aside>` HTML element over blockquotes. This theme supports both.
+
+```text
+> This is a blockquote.
+>
+> This is a default **markdown** element and supports formatting inside it.
+
+{{< aside >}}
+This is an aside element.
+
+You can use **markdown** formatting inside it.
+{{</ aside >}}
+```
+
+The above code generates the following output:
+
+![Comparing a blockquote to an aside. The blockquote has a thin bar on it's left, while the aside element is inside a nice box with rounded corners.](/docs/blockquote_vs_aside.png)
+
 ## Notes
 
 - Benjamin loves when new sites and projects pop up using the readable.css framework!

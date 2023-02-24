@@ -48,6 +48,18 @@ The above code generates the following output:
 
 ![Comparing a blockquote to an aside. The blockquote has a thin bar on it's left, while the aside element is inside a nice box with rounded corners.](/docs/blockquote_vs_aside.png)
 
+### video
+
+You can use the `video` shortcode to embed a video player in your post.
+
+```text
+{{< video source="https://test-videos.co.uk/vids/bigbuckbunny/mp4/av1/1080/Big_Buck_Bunny_1080_10s_5MB.mp4" type="video/mp4" caption="Of course it's Big Buck Bunny!" >}}
+```
+
+![A still from an embedded video with controls in a post.](/docs/video.png)
+
+Sources can be remote or static content from your website. You can find the supported file types [here](https://www.w3schools.com/html/html5_video.asp#table1).
+
 ## Notes
 
 - Benjamin loves when new sites and projects pop up using the readable.css framework!

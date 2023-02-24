@@ -30,7 +30,9 @@ Freedom to Write has provided some awesome guides on writing HTML that works aut
 
 ### aside
 
-readable.css prefers the `<aside>` HTML element over blockquotes. This theme supports both.
+You can use the `aside` shortcode to signify content that is slightly off-topic in regard to the rest of the post.
+
+Here's how it compares to a blockquote:
 
 ```text
 > This is a blockquote.

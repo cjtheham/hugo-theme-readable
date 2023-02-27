@@ -1,0 +1,8 @@
+<figure>
+    <video controls>
+        <source src="{{ .Get "source" }}" type="{{ .Get "type" }}">
+    </video>
+    {{ if .Get "caption" }}
+    <figcaption>{{ .Get "caption" }}</figcaption>
+    {{ end }}
+</figure>

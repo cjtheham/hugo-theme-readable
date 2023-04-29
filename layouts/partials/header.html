@@ -1,7 +1,7 @@
 <h1>{{ $.Site.Title }}</h1>
 <p>{{ $.Site.Params.subtitle }}</p>
 
-<nav>
+<nav data-style="classy">
   {{ range .Site.Menus.main -}}
   <span>
       <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>

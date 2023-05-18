@@ -1,0 +1,42 @@
+name: update-readable-css
+
+on:
+  schedule:
+    # Every day at 3:28.
+    - cron: '28 3 * * *'
+
+jobs:
+  update-readable-css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download CSS files for latest tag
+        run: .github/scripts/update-readable-css.sh
+      - name: Create pull request if files have changed
+        # https://github.com/marketplace/actions/create-pull-request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          # First line is the commit subject as always. The rest goes
+          # into the body.
+          commit-message: |
+            Update readable.css to ${{ env.READABLE_CSS_TAG }}
+
+            See the changelog here:
+
+            https://codeberg.org/Freedom-to-Write/readable.css/src/tag/${{ env.READABLE_CSS_TAG }}/CHANGELOG.md
+          branch: update-readable-css
+          delete-branch: true
+          # Use 'GitHub' both times.
+          # This is already the default for committer, but the author defaults
+          # to the user who triggered the workflow run, which is the owner of
+          # the repository.
+          # We use the same value for the author to indicate that the
+          # commit was created by a bot.
+          committer: GitHub <noreply@github.com>
+          author: GitHub <noreply@github.com>
+          title: Update readable.css to ${{ env.READABLE_CSS_TAG }}
+          body: |
+            See the changelog here:
+
+            https://codeberg.org/Freedom-to-Write/readable.css/src/tag/${{ env.READABLE_CSS_TAG }}/CHANGELOG.md
+          labels: update-readable-css

@@ -23,9 +23,9 @@ echo "Latest tag: ${TAG_VERSION}"
 # the right numbers in the file.
 # We use sed to get rid of the readable.min.css prefix.
 CURRENT_VERSION=$(grep -o \
-    'readable.min.css?v=[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+' \
+    'readable.min.css?v=v[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+' \
     layouts/partials/head.html \
-    | sed 's/readable.min.css?v=/v/')
+    | sed 's/readable.min.css?v=//')
 echo "Current version: ${CURRENT_VERSION}"
 
 if [[ $TAG_VERSION == $CURRENT_VERSION ]]
@@ -34,8 +34,7 @@ then
 else
     curl -s "https://codeberg.org/Freedom-to-Write/readable.css/raw/tag/${TAG_VERSION}/readable.css" > static/css/readable.css
     curl -s "https://codeberg.org/Freedom-to-Write/readable.css/raw/tag/${TAG_VERSION}/readable.min.css" > static/css/readable.min.css
-    VERSION=$(echo "${TAG_VERSION}" | sed 's/v//')
-    sed -i "s/readable.min.css?v=.*/readable.min.css?v=${VERSION}\">/" layouts/partials/head.html
+    sed -i "s/readable.min.css?v=${CURRENT_VERSION}/readable.min.css?v=${TAG_VERSION}/" layouts/partials/head.html
 fi
 
 # Add the latest tag version to the workflow environment, so we can access

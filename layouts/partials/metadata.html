@@ -1,8 +1,14 @@
 {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $lastmodTime := .Lastmod.Format "2006-01-02" }}
 {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
 <i data-feather="calendar"></i>
 {{ if .PublishDate }}
+{{ if and (ne $lastmodTime $dateTime) (gt .Lastmod .Date) }}
+  <time datetime="{{ $lastmodTime }}">{{ .Lastmod.Format $dateFormat }}</time>
+  (first posted <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>)
+{{ else }}
   <time datetime="{{ $dateTime }}">{{ .PublishDate.Format $dateFormat }}</time>
+{{ end }}
 {{ end }}
 {{ with .Params.tags }}
 <i data-feather="tag"></i>

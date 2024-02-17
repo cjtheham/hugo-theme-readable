@@ -4,15 +4,22 @@ set -o pipefail
 set -o nounset
 
 # Query the codeberg.org API (see
-# https://codeberg.org/api/swagger#/repository/repoListReleases) and use jq to
-# get the tag name of the latest release (i.e. the first element of the array
-# in the JSON output). Finally, use sed to remove the double quotes around the
-# value.
+#   https://codeberg.org/api/swagger#/repository/repoListReleases
+# ) and use jq to get the tag name of the
+# latest release (i.e. the first element of the
+# array in the JSON output, that is not a
+# prerelease).
+# The '-r' option will give us "raw" output,
+# i.e. without surrounding double-quotes.
+# We use 'map' and 'select' in combination,
+# because jq won't return a list otherwise.
+# Only using 'select' returns just the matching
+# elements, which is not a valid json that we
+# can process further.
 TAG_VERSION=$(curl -s \
     -H 'accept: application/json' \
     https://codeberg.org/api/v1/repos/Freedom-to-Write/readable.css/releases \
-    | jq '.[0].tag_name' \
-    | sed 's/"//g')
+    | jq -r '.|map(select(.prerelease==false))[0].tag_name')
 
 echo "Latest tag: ${TAG_VERSION}"
 

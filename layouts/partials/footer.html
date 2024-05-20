@@ -1,3 +1,8 @@
-<p><a href="/policies/privacy/">Privacy Policy</a> | <a href="/policies/cookies/">Cookie Policy</a> | <a href="/policies/terms/">Terms of Use</a></p> <!-- We like putting links in a paragraph separated by pipe ("|") characters -->
-<p>© 2023 {{ $.Site.Params.author }}</p> <!-- While not legally required, it's nice to put copyright and/or license info here. Also, it looks nice to break up the links with a line of text -->
+{{ if .Site.Params.footer.minimal | not }} 
+<p>
+	<a href="/policies/privacy/">Privacy Policy</a> | <a href="/policies/cookies/">Cookie Policy</a> | <a href="/policies/terms/">Terms of Use</a>
+	</p> 
+{{ end }}
+	<!-- We like putting links in a paragraph separated by pipe ("|") characters -->
+<p>{{ now.Format "2006" }} ©  {{ $.Site.Params.author }} {{ with .Site.Params.License }} - {{ . | markdownify }} {{ end }} </p> <!-- While not legally required, it's nice to put copyright and/or license info here. Also, it looks nice to break up the links with a line of text -->
 <a href={{ $.Site.Params.Mastodon }} rel="me" target="blank">Mastodon</a> | <a href="/contact/">Contact Me</a> | <a href="/posts/index.xml">RSS Feed</a></p> <!-- This is the kind of thing people look for in footers: contact info and legal info. Make sure you include both! -->
